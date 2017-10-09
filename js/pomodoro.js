@@ -22,10 +22,10 @@ $(document).ready(function(){
     for ( var i = 0; i < timer; i+= 1000) {
       if (i < 60000) {
         $("#seconds").append('<span class="text-danger"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-      } else if ( i < 180000) {
-        $("#seconds").append('<span class="text-warning"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-      } else if ( i < 360000) {
-        $("#seconds").append('<span class="text-info"><i class="fa fa-circle" aria-hidden="true"></i></span>');
+     // } else if ( i < 180000) {
+     //   $("#seconds").append('<span class="text-warning"><i class="fa fa-circle" aria-hidden="true"></i></span>');
+     // } else if ( i < 360000) {
+     //   $("#seconds").append('<span class="text-info"><i class="fa fa-circle" aria-hidden="true"></i></span>');
       } else {
         $("#seconds").append('<span class="text-dark"><i class="fa fa-circle" aria-hidden="true"></i></span>');
       }
@@ -33,8 +33,8 @@ $(document).ready(function(){
   };
 
   function every_second() {
-    set_timer();
     timer -= 1000;
+    set_timer();
     if (timer < 0) {
       clearInterval(timeout);
       console.log("timeout");
