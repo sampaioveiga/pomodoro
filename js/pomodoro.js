@@ -1,6 +1,6 @@
 $(document).ready(function(){
   //variables
-  var timer = 5000;//1500000; //25 * 60 * 1000;
+  var timer = 1500000; //25 * 60 * 1000;
   var countdown = false;
   var timeout;
   set_timer();
@@ -20,21 +20,27 @@ $(document).ready(function(){
   function print_balls() {
     $("#seconds").html("");
     for ( var i = 0; i < timer; i+= 1000) {
-      if (i < 60000) {
-        $("#seconds").append('<span class="text-danger"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-     // } else if ( i < 180000) {
-     //   $("#seconds").append('<span class="text-warning"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-     // } else if ( i < 360000) {
-     //   $("#seconds").append('<span class="text-info"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-      } else {
-        $("#seconds").append('<span class="text-dark"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-      }
+    //  if (i < 60000) {
+    //    $("#seconds").append('<span class="text-danger"><i class="fa fa-circle" aria-hidden="true"></i></span>');
+    //   } else if ( i < 180000) {
+    //     $("#seconds").append('<span class="text-warning"><i class="fa fa-circle" aria-hidden="true"></i></span>');
+    //   } else if ( i < 360000) {
+    //     $("#seconds").append('<span class="text-info"><i class="fa fa-circle" aria-hidden="true"></i></span>');
+    //  } else {
+        $("#seconds").append('<i class="fa fa-circle" aria-hidden="true"></i>');
+    //  }
     }
   };
+
+  function fade_ball() {
+    $("#seconds").append('<span id="last_ball" class="text-dark"><i class="fa fa-circle" aria-hidden="true"></i></span>');
+    $("#last_ball").fadeOut();
+  }
 
   function every_second() {
     timer -= 1000;
     set_timer();
+    fade_ball();
     if (timer < 0) {
       clearInterval(timeout);
       console.log("timeout");
@@ -54,6 +60,10 @@ $(document).ready(function(){
     }
     countdown = true;
     timeout = setInterval(every_second, 1000);
+    $("#li_start_button").removeClass("active");
+    $("#li_plus1m_button").removeClass("active");
+    $("#li_minus1m_button").removeClass("active");
+    $("#li_reset_button").addClass("active");
   });
 
   //button reset_click
@@ -62,6 +72,10 @@ $(document).ready(function(){
     countdown = false;
     timer = 1500000;
     set_timer();
+    $("#li_start_button").addClass("active");
+    $("#li_plus1m_button").addClass("active");
+    $("#li_minus1m_button").addClass("active");
+    $("#li_reset_button").removeClass("active");
   });
 
   //button plus_1m

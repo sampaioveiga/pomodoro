@@ -14,15 +14,29 @@
   <script src="js\pomodoro.js"></script>
 </head>
 <body>
-   <pre>
-    <code>
-      <a id="start_button">Start (25m)</a>
-      <a id="reset_button">Reset</a>
-      <a id="plus_1m">+ (1m)</a>
-      <a id="minus_1m">- (1m)</a>
-      <a id="visor">visor</a>
-    </code>
-  </pre>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <a class="navbar-brand" href="#">Pomodoro clock</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active" id="li_start_button">
+          <a class="nav-link" href="#" id="start_button">Start <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" id="li_reset_button">
+          <a class="nav-link" href="#" id="reset_button">Reset <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" id="li_plus1m_button">
+          <a class="nav-link" href="#" id="plus_1m">More time <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active" id="li_minus1m_button">
+          <a class="nav-link " href="#" id="minus_1m">Less time <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <div id="visor" class="btn btn-outline-success"></div>
+      </span>
+    </div>
+  </nav>
+
   <div class="container">
     <div class="row justify-content-center">
       <div class="col" id="seconds"></div>
