@@ -20,15 +20,7 @@ $(document).ready(function(){
   function print_balls() {
     $("#seconds").html("");
     for ( var i = 0; i < timer; i+= 1000) {
-    //  if (i < 60000) {
-    //    $("#seconds").append('<span class="text-danger"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-    //   } else if ( i < 180000) {
-    //     $("#seconds").append('<span class="text-warning"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-    //   } else if ( i < 360000) {
-    //     $("#seconds").append('<span class="text-info"><i class="fa fa-circle" aria-hidden="true"></i></span>');
-    //  } else {
-        $("#seconds").append('<i class="fa fa-circle" aria-hidden="true"></i>');
-    //  }
+      $("#seconds").append('<i class="fa fa-circle" aria-hidden="true"></i>');
     }
   };
 
@@ -39,17 +31,18 @@ $(document).ready(function(){
 
   function every_second() {
     timer -= 1000;
-    set_timer();
-    fade_ball();
     if (timer < 0) {
       clearInterval(timeout);
-      console.log("timeout");
+      timer = 0;
       alarm();
+    } else {
+      set_timer();
+      fade_ball();
     }
   };
 
   function alarm() {
-    console.log("alarm");
+    $("#seconds").html("<br /><div class='jumbotron'><h1 class='display-3'>Time's up!</h1></div>");
   };
 
   //button start_click
